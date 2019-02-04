@@ -1,0 +1,9 @@
+.list-film {
+    
+}
+.film:nth-child(odd) {
+    background-color: purple;
+}
+.film:nth-child(even) {
+    background-color: cornflowerblue;
+}

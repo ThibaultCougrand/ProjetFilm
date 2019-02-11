@@ -1,13 +1,13 @@
 .grid-container {
-    height: 100vh;
     margin: 0;
     padding: 0;
     display: grid;
     grid-gap: 10px;
-    grid-template-rows: 1fr 3fr ;
-    grid-template-columns: 1fr 3fr ;
+    grid-template-rows: 20vh 1fr 20vh;
+    grid-template-columns: .7fr 3.3fr ;
     grid-template-areas: "header header"
-                         "aside list-film";
+                         "aside list-film"
+                         "footer footer";
 }
 header {
     background-color: red;
@@ -17,11 +17,16 @@ aside {
     background-color: green;
     grid-area: aside;
 }
-.list-film {
+main {
     background-color: yellow;
     grid-area: list-film;
+}
+footer {
+    background-color: blue;
+    grid-area: footer;
+}
+.list-film {
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr 1fr;
 }

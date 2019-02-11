@@ -1,64 +1,48 @@
-console.log("hello world");
-var titre = "un titre";
-var realisateur = "un realisateur";
-var date = "une date";
-var synopsis = "un synopsis";
-var entrees = 1000;
-
-var filmJson = {
-    titre: "un titre",
-    realisateur: "un realisateur",
-    date: "une date",
-    synopsis: "un synopsis",
-    entrees: 1000
-};
-
-var filmTab = [
-    titre = "un titre",
-    realisateur = "un realisateur",
-    date = "une date",
-    synopsis = "un synopsis",
-    entrees = 1000
-];
-
-var listeFilm = [
+var films = [//tableau d'objet contenant mes films.
     {
-        titre: "un titre 1",
-        realisateur: "un realisateur 1",
-        date: "une date 1",
-        synopsis: "un synopsis 1",
-        entrees: 1001
-    },
-    {
-        titre: "un titre 2",
-        realisateur: "un realisateur 2",
-        date: "une date 2",
-        synopsis: "un synopsis 2",
-        entrees: 1002
-    },
-    {
-        titre: "un titre 3",
-        realisateur: "un realisateur 3",
-        date: "une date 3",
-        synopsis: "un synopsis 3",
-        entrees: 1003
+        titre: "La sitée de la peur",
+        realisateur: "Alain Berbérian",
+        sortie: "09/03/1994",
+        synopsis: "C'est drôle",
+        nbEntrées: 2279190
+    }, {
+        titre: "Pulp Fiction",
+        realisateur: "Quentin Tarantino",
+        sortie: "26/10/1994",
+        synopsis: "C'est trop bien",
+        nbEntrées: 2864640
+    }, {
+        titre: "Avatar",
+        realisateur: "James Cameron",
+        sortie: "16/12/2009",
+        synopsis: "Bah c'est bien aussi",
+        nbEntrées: 14775990
     }
 ];
 
-for (i = 0; i < listeFilm.length; i++) {
-    console.log(listeFilm[i].titre);
+function addFilm(element) {// fonction qui permet de push mes films dans mon html.
+    return `<div class="film">
+            <p>${element.titre}</p>\n
+            <p>${element.realisateur}</p>\n
+            <p>${element.sortie}</p>\n
+            <p>${element.synopsis}</p>\n
+            <p>${element.nbEntrées}</p>
+            </div>`;
 };
-for (i in listeFilm) {
-    console.log(listeFilm[i].realisateur);
-};
-listeFilm.forEach(function(listeFilm) {
-    console.log(listeFilm.date); 
+
+films.forEach(element => { // boucle sur mon tableau d'objet.
+    document.getElementById('js-film').insertAdjacentHTML('afterbegin', addFilm(element));//fonction addFilm sur tout mes film.
 });
 
-var listeFilter = listeFilm.filter(listeFilm => listeFilm.entrees >1001);
-console.log(listeFilter);
+document.getElementById('js-film').insertAdjacentHTML('beforebegin', '<h3>titre de liste</h3>');//Ajout d'un titre à ma liste.
 
-var reducer = (a, b) => a + b.entrees;
-console.log(listeFilm.reduce(reducer,0));
-console.log(listeFilter.reduce(reducer,0));
+var copy = document.createElement('p');//créer mon élément <p> pour contenir mon copyright.
+copy.id = "copy";//je lui donne un id.
+copy.textContent = "Copyright";//je lui ajoute du texte.
+copy.textContent += " nom de la société";//je lui concatène du texte.
 
+document.querySelector('footer').appendChild(copy);//Je créer mon élément copy dans mon footer.
+
+var listeFilmHtml = document.querySelector('.film:nth-child(2)');
+
+console.log(listeFilmHtml);
